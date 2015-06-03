@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8" />
+  <title>Save Nepal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script>
+  $(function() {
+    var socket = io.connect();
+    $('form').submit(function() {
+      socket.emit('msg', $('input').val());
+      $('input').val('');
+      return false;
+    });
+  
+    socket.on('msg', function(data) {
+          console.log(data);
+      $('div#tweet').prepend(data + '<br>');
+  
+    });
+  });
+  </script>
+</head>
+<body>
+  <header id="header">
+   <div class="row">
+      <img src="img/nepal_flag.png" id="nepal_flag" width="10%"></img>
+      <h1>Save Nepal</h1>
+    </div>
+  </header>
+  <!-- /header -->
+
+  <nav class="navbar navbar-default">
+    <div class="row">
+      <ul class="nav nav-pills nav-justified">
+        <li><a href="#">Save Nepalとは</a></li>
+        <li><a href="#">ネパール支援</a></li>
+        <li><a href="#">現在のネパール</a></li>
+        <li><a href="#">支援</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  
+  
+  <div class="main">
+    <div class="row">
+      <div class="sidebar">
+        <ul>
+          <li>情報</li>
+          <li></li>
+          <li></li>
+          <li></li>
+          
+          
+        </ul>
+        
+      </div>
+      
+      
+      <div class="tweets">
+        <form>
+          <input>
+        </form>
+        <div id="tweet"></div>
+      </div>
+      
+      
+    </div>
+  </div>
+  
+  <footer>
+  </footer>
+</body>
+</html>
