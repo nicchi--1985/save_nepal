@@ -1,8 +1,9 @@
 
 サービスの起動方法
-cd product
 npm install
-node index
+node product/index
+
+（Ctrl+Cで抜けれます）
 
 https://save_nepal-kohhhhhey.c9.io
 
