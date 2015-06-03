@@ -62,5 +62,6 @@ io.sockets.on('connection', function(socket) {
 twit.stream('statuses/filter', option, function(stream) {
   stream.on('data', function (data) {
     io.sockets.emit('msg', data.text);
+    console.log(data.text);
   });
 });
